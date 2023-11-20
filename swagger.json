@@ -1,0 +1,90 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Nordeus Flask API",
+        "description": "This API was developed using Python Flask, which provides an interface for querying data related to users actions in 'Top Eleven' game.",
+        "version": "1.0"
+    },
+    "basePath": "/api",
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/user_stat": {
+            "get": {
+                "summary": "Returns user level statistics information.",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "user_id",
+                        "type": "string",
+                        "required": true,
+                        "description": "User id"
+                    },
+                    {
+                        "in": "query",
+                        "name": "date",
+                        "type": "string",
+                        "required": false,
+                        "description": "Date"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/game_stat": {
+            "get": {
+                "summary": "Returns game level statistics information.",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "country",
+                        "type": "string",
+                        "required": false,
+                        "description": "Country"
+                    },
+                    {
+                        "in": "query",
+                        "name": "date",
+                        "type": "string",
+                        "required": false,
+                        "description": "Date"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
