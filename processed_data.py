@@ -31,7 +31,7 @@ user_level_df = user_level_df[
 engine = create_engine("postgresql://postgres:admin@localhost:5432/nordeus")
 conn = engine.connect()
 
-user_df.to_sql("consumer", conn, if_exists="append", index=False)
+user_df.to_sql("gamer", conn, if_exists="append", index=False)
 country_df.to_sql("country", conn, if_exists="append", index=False)
 date_df.to_sql("time", conn, if_exists="append", index=False)
 user_level_df.to_sql("user_level_stat", conn, if_exists="append", index=False)

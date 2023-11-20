@@ -1,9 +1,9 @@
 # dimension tables
-user_table_drop = "DROP TABLE IF EXISTS consumer"
+user_table_drop = "DROP TABLE IF EXISTS gamer"
 country_table_drop = "DROP TABLE IF EXISTS country"
 time_table_drop = "DROP TABLE IF EXISTS time"
 
-user_table_create = """CREATE TABLE IF NOT EXISTS consumer ( 
+user_table_create = """CREATE TABLE IF NOT EXISTS gamer ( 
     user_id varchar PRIMARY KEY NOT NULL, 
     name varchar, 
     country varchar(2) 
@@ -18,7 +18,7 @@ time_table_create = """CREATE TABLE IF NOT EXISTS time (
 );"""
 
 user_table_insert = """ 
-    INSERT INTO consumer (
+    INSERT INTO gamer (
         user_id, 
         name, 
         country) VALUES (%s, %s, %s)
@@ -39,7 +39,7 @@ user_level_stat_table_drop = "DROP TABLE IF EXISTS user_level_stat"
 game_level_stat_table_drop = "DROP TABLE IF EXISTS game_level_stat"
 
 user_level_stat_table_create = """CREATE TABLE IF NOT EXISTS user_level_stat ( 
-    user_id varchar NOT NULL references consumer(user_id), 
+    user_id varchar NOT NULL references gamer(user_id), 
     date date NOT NULL references time(day), 
     number_of_logins int NOT NULL, 
     last_login int NOT NULL, 
@@ -109,7 +109,7 @@ uls_user_query = """
         FROM user_level_stat
         GROUP BY user_id, inactive_days
         HAVING user_id = '%s'
-    ) uls LEFT OUTER JOIN consumer u
+    ) uls LEFT OUTER JOIN gamer u
     ON uls.user_id = u.user_id;
 """
 
@@ -117,7 +117,7 @@ uls_query = """
     SELECT uls.user_id, u.name, u.country, uls.date,
         uls.number_of_logins, uls.session_num,
         uls.time_spent, uls.last_login
-    FROM user_level_stat uls LEFT OUTER JOIN consumer u
+    FROM user_level_stat uls LEFT OUTER JOIN gamer u
     ON uls.user_id = u.user_id
     WHERE uls.user_id = '%s' AND uls.date = '%s';
 """
