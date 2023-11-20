@@ -129,8 +129,8 @@ gls_none_query = """
         sum(active_users) as active_users, 
         sum(total_revenue_usd) as total_revenue_usd, 
         sum(paid_users) as paid_users,
-        sum(session_sum)/sum(session_users_count) as avg_session_num, 
-        sum(time_spent_sum)/sum(time_spent_users_count) as avg_time_spent 
+        cast(sum(session_sum) as float)/cast(sum(session_users_count) as float) as avg_session_num, 
+        cast(sum(time_spent_sum) as float)/cast(sum(time_spent_users_count) as float) as avg_time_spent
     FROM game_level_stat gls;
 """
 gls_country_query = """
@@ -138,8 +138,8 @@ gls_country_query = """
         sum(active_users) as active_users, 
         sum(total_revenue_usd) as total_revenue_usd, 
         sum(paid_users) as paid_users, 
-        sum(session_sum)/sum(session_users_count) as avg_session_num, 
-        sum(time_spent_sum)/sum(time_spent_users_count) as avg_time_spent
+        cast(sum(session_sum) as float)/cast(sum(session_users_count) as float) as avg_session_num, 
+        cast(sum(time_spent_sum) as float)/cast(sum(time_spent_users_count) as float) as avg_time_spent
     FROM game_level_stat gls
     GROUP BY gls.country
     HAVING gls.country = '%s';
@@ -149,8 +149,8 @@ gls_date_query = """
         sum(active_users) as active_users, 
         sum(total_revenue_usd) as total_revenue_usd, 
         sum(paid_users) as paid_users,
-        sum(session_sum)/sum(session_users_count) as avg_session_num, 
-        sum(time_spent_sum)/sum(time_spent_users_count) as avg_time_spent
+        cast(sum(session_sum) as float)/cast(sum(session_users_count) as float) as avg_session_num, 
+        cast(sum(time_spent_sum) as float)/cast(sum(time_spent_users_count) as float) as avg_time_spent
     FROM game_level_stat gls
     GROUP BY gls.date
     HAVING gls.date = '%s';

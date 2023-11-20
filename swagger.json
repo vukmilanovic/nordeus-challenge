@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "title": "Nordeus Flask API",
-        "description": "This API was developed using Python Flask, which provides an interface for querying data related to users actions in 'Top Eleven' game.",
+        "description": "This API was developed using Python Flask, which provides an interface for querying data related to users actions in football manager game.",
         "version": "1.0"
     },
     "basePath": "/api",
